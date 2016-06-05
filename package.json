@@ -1,0 +1,23 @@
+{
+  "name": "node-app",
+  "version": "1.0.0",
+  "description": "The code repository for the Node booklet.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://juanmaruiz@bitbucket.org/juanmaruiz/node-demo.git"
+  },
+  "keywords": [
+    "node",
+    "demo"
+  ],
+  "author": "JuanMa Ruiz",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/juanmaruiz/node-demo#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
