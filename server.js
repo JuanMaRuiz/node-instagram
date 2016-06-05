@@ -1,19 +1,47 @@
-// Grab express
+/* Grab the packages/variables we need
+ ======================================== */
 var express = require('express');
-
-// Create an express app
 var app = express();
+var ig = require('instagram-node').instagram();
+
+/* Documentation http get api
+ * https://www.npmjs.com/package/node-rest-client
+ */
+ var Client = require('node-rest-client').Client;
+ var client = new Client();
 
 
-console.log(__dirname);
-// Create an express route for the home page http://localhost:8080/
-app.get('/', function(req, res) {
-  res.sendFile('index.html', {
-    root: __dirname
-  });
+/* Configure de app
+ * Tell node where to look for site resources
+ */
+app.use(express.static(__dirname + '/public'));
+
+// Set the view engine to ejs
+app.set('view engine', 'ejs');
+
+// TODO
+// Configure instagram app with client-id
+
+
+// registering remote methods
+client.registerMethod("jsonMethod", "https://authenticjobs.com/api/?api_key=bf2409503261726bae4bfed16bcd8399&method=aj.jobs.search&keywords=angular&format=json", "GET");
+
+client.methods.jsonMethod(function (data, response) {
+	// parsed response body as js object
+	console.log(data);
+	// raw response
+	console.log(response);
 });
 
-// Start the server on port 8080
+/* Set the routes
+ * home page route - popular images
+ */
+app.get('/', function(req, res){
+  // Use the instagram package to get popular media
+  // Render the home page and pass in the popular images
+  res.render('pages/index');
+});
+
+// Start the Server
 app.listen(8080);
-// Send message
-console.log('Server has started!!');
+console.log('App started! Look at http://localhost:8080');
