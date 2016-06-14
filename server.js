@@ -2,7 +2,6 @@
  ======================================== */
 var express = require('express');
 var app = express();
-var ig = require('instagram-node').instagram();
 
 /* Documentation http get api
  * https://www.npmjs.com/package/node-rest-client
@@ -16,7 +15,7 @@ var ig = require('instagram-node').instagram();
  */
 app.use(express.static(__dirname + '/public'));
 
-// Set the view engine to ejs
+// Set the view engine to ejs (JS templating)
 app.set('view engine', 'ejs');
 
 // TODO
@@ -29,8 +28,6 @@ client.registerMethod("jsonMethod", "https://authenticjobs.com/api/?api_key=bf24
 client.methods.jsonMethod(function (data, response) {
 	// parsed response body as js object
 	console.log(data);
-	// raw response
-	console.log(response);
 });
 
 /* Set the routes
