@@ -32,6 +32,6 @@ app.get('/', function(req, res){
   });
 });
 
-// // Start the Server
-// app.listen(8080);
-// console.log('App started! Look at http://localhost:8080');
+// Start the Server
+app.listen(.listen(process.env.PORT || 5000));
+console.log('App started! Look at http://localhost:8080');
