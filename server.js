@@ -19,24 +19,17 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 // TODO
-// Configure instagram app with client-id
-
-
+// Configure authenticjobs
 // registering remote methods
 client.registerMethod("jsonMethod", "https://authenticjobs.com/api/?api_key=bf2409503261726bae4bfed16bcd8399&method=aj.jobs.search&keywords=angular&format=json", "GET");
-
-client.methods.jsonMethod(function (data, response) {
-	// parsed response body as js object
-	console.log(data);
-});
 
 /* Set the routes
  * home page route - popular images
  */
 app.get('/', function(req, res){
-  // Use the instagram package to get popular media
-  // Render the home page and pass in the popular images
-  res.render('pages/index');
+  client.methods.jsonMethod(function (data, response) {
+    res.render('pages/index', { jobs: data.listings.listing });
+  });
 });
 
 // Start the Server
