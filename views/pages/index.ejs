@@ -12,7 +12,7 @@
       <% jobs.forEach(function(job) { %>
       <div class="col-sm-6 col-md-4">
             <div class="caption">
-              <h3><%= job.title %> <span class="label label-info"><%= job.keywords.split(",") %></span></h3>
+              <h3><%= job.title %> <span class="label label-info"></h3>
               <p><%- job.description %></p>
               <p><a href="<%= job.apply_url %>" class="btn btn-primary" role="button">Apply</a></p>
             </div>
