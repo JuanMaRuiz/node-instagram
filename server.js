@@ -1,7 +1,10 @@
 /* Grab the packages/variables we need
  ======================================== */
-var express = require('express');
-var app = express();
+var express = require('express'),
+    app = express(),
+    // set the port of our application
+    // process.env.PORT lets the port be set by Heroku
+    port = process.env.PORT || 8080;
 
 /* Documentation http get api
  * https://www.npmjs.com/package/node-rest-client
@@ -15,7 +18,7 @@ var app = express();
  */
 app.use(express.static(__dirname + '/public'));
 
-// Set the view engine to ejs (JS templating)
+// Set the view engine to ejs
 app.set('view engine', 'ejs');
 
 // TODO
@@ -33,5 +36,5 @@ app.get('/', function(req, res){
 });
 
 // Start the Server
-app.listen(process.env.PORT || 5000);
+app.listen(port);
 console.log('App started! Look at http://localhost:8080');
